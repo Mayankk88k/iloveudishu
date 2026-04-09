@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For You ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Dancing+Script&display=swap" rel="stylesheet">
+
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg,#000000,#e4b1c6);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* GLASS CARD */
+.glass {
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 20px;
+  margin: 20px;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.hero h1 { font-size: 2.5rem; }
+
+.btn {
+  margin-top: 15px;
+  padding: 12px 20px;
+  border:none;
+  border-radius:25px;
+  background:white;
+  color:#ff4d6d;
+  font-weight:bold;
+}
+
+/* MUSIC BUTTON */
+.music-btn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  background: white;
+  color: #ff4d6d;
+  padding: 10px;
+  border-radius: 50%;
+  font-size: 18px;
+}
+
+/* TIMELINE */
+.timeline-item {
+  opacity:0;
+  transform: translateY(40px);
+  transition:0.6s;
+}
+
+.timeline-item img {
+  width:100%;
+  border-radius:10px;
+  margin-top:10px;
+}
+
+/* SLIDER */
+.slider {
+  width: 100%;
+  max-width: 320px;     /* 👈 limits size (perfect for both mobile + laptop) */
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+/* PREMIUM SLIDER */
+.slider {
+  max-width: 260px;
+  margin: 25px auto;
+  overflow: hidden;
+  border-radius: 20px;
+  position: relative;
+}
+
+/* SLIDES CONTAINER */
+.slides {
+  display: flex;
+  transition: transform 0.8s ease-in-out; /* smooth sliding */
+}
+
+/* IMAGES */
+.slides img {
+  flex: 0 0 100%;
+  width: 100%;
+  aspect-ratio: 3 / 4;              /* 🔥 perfect portrait */
+  object-fit: cover;
+  border-radius: 20px;
+
+  /* PREMIUM EFFECTS */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* HOVER / TOUCH EFFECT */
+.slides img:hover {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+/* FINAL */
+.final button {
+  padding:12px 20px;
+  margin:10px;
+  border:none;
+  border-radius:20px;
+  background:white;
+  color:#ff4d6d;
+}
+
+#result {
+  margin-top:15px;
+  font-size:1.3rem;
+}
+
+/* HEART */
+.heart {
+  position:fixed;
+  bottom:0;
+  animation:float 5s linear infinite;
+}
+
+@keyframes float {
+  to { transform: translateY(-100vh); opacity:0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<input type="file" id="musicUpload" accept="audio/*" hidden>
+<audio id="music" src="snaplytics.io_instagram_audio_DT8alDTkv-k.mp3"></audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎵</button>
+
+<!-- HERO -->
+<div class="hero">
+  <h1>1 Year With You ❤️</h1>
+  <p>Happy one year my princess, queen, Diva 🥹</p>
+  <button class="btn" onclick="scrollNext()">scroll down</button>
+</div>
+
+<!-- TIMELINE -->
+<div class="glass">
+  <h2>Our Story 📖</h2>
+
+  <div class="timeline-item glass">
+    <h3>💬 proposal</h3>
+    <p>Where everything began...</p>
+    <img src="WhatsApp Image 2026-03-29 at 8.38.17 PM.jpeg">
+  </div>
+
+  <div class="timeline-item glass">
+    <h3>📞 Longest call </h3>
+    <p>We didn’t want to hang up...</p>
+    <img src="WhatsApp Image 2026-03-29 at 8.33.15 PM.jpeg">
+  </div>
+</div>
+
+<!-- HER PHOTOS SLIDER -->
+<div class="glass">
+  <h2>My favourite pictures  📸</h2>
+
+  <div class="slider">
+    <div class="slides" id="slides">
+
+      <img src="58fa0c913e15695c0d286f2b056bfc56.jpg">
+      <img src="Snapchat-1088066691.jpg">
+      <img src="Snapchat-841446142.jpg">
+      <img src="IMG-20260323-WA0169.jpg">
+      <img src="IMG_20250718_215442_358.jpg">
+      <img src="IMG_20250411_132810_292.jpg">
+      <img src="file_0000000002b46230a30ad0f0c0306c5d_conversation_id=6805ae30-9f78-8009-9363-c7fc2d6dae58&message_id=0fea5de8-1b56-444b-bdd1-bb7baf5a2f27.png">
+      <img src="1757906513024.jpg">
+      <img src="image.png">
+      <img src="Snapchat-1148841856.jpg">
+
+    </div>
+  </div>
+</div>
+
+<!-- LETTER -->
+<div class="glass">
+  <h2>For You ❤️</h2>
+  <div class="letter" id="letter"></div>
+</div>
+
+<!-- FINAL -->
+<div class="glass final">
+  <h2>One Question 💍</h2>
+  <p>Will you stay with me forever?</p>
+
+  <button onclick="yes()">Yes ❤️</button>
+  <button onclick="yes()">Again Yes 😍</button>
+
+  <div id="result"></div>
+</div>
+
+<script>
+
+/* SCROLL */
+function scrollNext(){
+  document.querySelector('.glass').scrollIntoView({behavior:'smooth'});
+}
+
+/* TYPEWRITER */
+const msg = "Hi my love ❤️This letter is just for you…Happy one year, meri jaan. I love you more than words can ever explain.I know sometimes I make mistakes, and I’m really sorry if I’ve ever made you feel like my love for you is less… because the truth is, it’s only growing stronger every single day. You mean everything to me—more than my dreams, more than anything I ever wished for.I always hoped for someone like you in my life, and somehow I got lucky enough to have you. You’re not just my girlfriend, you’re my peace, my comfort, my happiness. The way you care for me, the way you understand me… it makes me feel so loved. And when you act like my little “mummy,” taking care of me—it honestly becomes my favorite feeling in the world 🥺❤️Thank you for being in my life, for loving me the way you do, and for making my world so beautiful.Happy one year, my love ❤️And I promise… this is just the beginning of us ✨ Distance never mattered, because you are always with me ❤️,";
+let i=0;
+
+function type(){
+  if(i<msg.length){
+    document.getElementById("letter").innerHTML += msg[i];
+    i++;
+    setTimeout(type,0);
+  }
+}
+type();
+
+/* TIMELINE ANIMATION */
+const items = document.querySelectorAll('.timeline-item');
+window.addEventListener('scroll',()=>{
+  items.forEach(el=>{
+    if(el.getBoundingClientRect().top < window.innerHeight-80){
+      el.style.opacity=1;
+      el.style.transform="translateY(0)";
+    }
+  });
+});
+
+/* SLIDESHOW JS */
+let slideIndex = 0;
+const slides = document.getElementById("slides");
+
+setInterval(() => {
+  slideIndex++;
+  if(slideIndex >= 10) slideIndex = 0;
+  slides.style.transform = `translateX(-${slideIndex * 100}%)`;
+  slides.style.transition = "1s";
+}, 3000);
+
+/* FINAL */
+function yes(){
+  document.getElementById("result").innerHTML =
+  "You just made me the happiest person alive ❤️";
+}
+
+/* HEARTS */
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="❤️";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+},400);
+
+/* MUSIC CONTROL */
+let music = document.getElementById("music");
+let isPlaying = false;
+
+document.body.addEventListener("click", ()=>{
+  if(!music.src){
+    document.getElementById("musicUpload").click();
+  }
+}, {once:true});
+
+document.getElementById("musicUpload").onchange = function(e){
+  const file = e.target.files[0];
+  if(file){
+    music.src = URL.createObjectURL(file);
+    music.play();
+    isPlaying = true;
+  }
+};
+
+function toggleMusic(){
+  if(!music.src){
+    document.getElementById("musicUpload").click();
+    return;
+  }
+  if(isPlaying){
+    music.pause();
+  } else {
+    music.play();
+  }
+  isPlaying = !isPlaying;
+}
+
+</script>
+
+</body>
+</html>
